@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ss5.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <i class="fas fa-microchip"></i> <span>Tech</span><span>Nova</span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="active main">الرئيسية</a></li>
+                <li class="wishlist"><a href="#" id="openWishlistBtn">المفضلة</a></li>
+                <li class="sections">
+                    <a href="#">الفئات</a>
+                    <ul class="sectionItems">
+                        <li class="https://dummyjson.com/products/category/laptops">لابتوبات</li>
+                        <li class="https://dummyjson.com/products/search?q=headphones">سماعات</li>
+                        <li class="https://dummyjson.com/products/category/mens-watches">ساعات</li>
+                    </ul>
+
+                </li>
+                <li><a href="#">نبذة عنا</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <i class="fas fa-moon" id="theme-toggle" style="cursor: pointer;"></i>
+    
+            <i class="fas fa-bars" id="menu-btn"></i>
+
+            <i class="fas fa-search"></i>
+            <i class="fas fa-user" id="user-btn"></i>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج (مثال: Sony, iPhone)...">
+                <i class="fas fa-search search-btn-inside"></i>
+            </div>
+            <ul class="search-results" id="searchResults"></ul>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="slider-wrapper">
+
+            <div class="slide" style="background-image: url('hero1.jpg');">
+                <div class="hero-content">
+                    <h1>أحدث لابتوبات</h1>
+                    <h1>للعمل واللعب</h1>
+                    <button class="btn btn-primary" id="https://dummyjson.com/products/category/laptops">تسوق
+                        الآن</button>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: url('hero2.jpg');">
+                <div class="hero-content">
+                    <h1>انغمس في الصوت</h1>
+                    <h1>بأعلى جودة</h1>
+                    <button class="btn btn-primary" id="https://dummyjson.com/products/search?q=headphones">اكتشف
+                        السماعات</button>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: url('hero3.jpg');">
+                <div class="hero-content">
+                    <h1>تكنولوجيا ذكية</h1>
+                    <h1>لحياة أسهل</h1>
+                    <button class="btn btn-primary" id="https://dummyjson.com/products/category/mens-watches">شاهد
+                        الساعات</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <main class="main-layout-wrapper filters-hidden">
+
+        <aside class="sidebar" id="sidebar">
+            <h2>الفلاتر</h2>
+            <div class="filter-group">
+                <h3>الفئة</h3>
+                <ul>
+                    <li><a href="https://dummyjson.com/products/category/laptops">لابتوبات</a></li>
+                    <li><a href="https://dummyjson.com/products/search?q=headphones">سماعات</a></li>
+                    <li><a href="https://dummyjson.com/products/category/mens-watches">ساعات ذكية</a></li>
+                </ul>
+            </div>
+            <div class="filter-group">
+                <h3>السعر</h3>
+                <p>من: <input type="number" placeholder="0" min="0"> إلى: <input type="number" placeholder="100000"
+                        min="0"></p>
+            </div>
+            <div class="allitems">عرض كل المنتجات</div>
+        </aside>
+        <div class="divfilters">
+            <button class="toggle-filter-btn" id="toggleFilterBtn">
+                <i class="fas fa-filter"></i> اظهار الفلاتر
+            </button>
+            <div class="sort-controls">
+                <label for="sortSelector">ترتيب حسب:</label>
+                <select id="sortSelector">
+                    <option value="default">الافتراضي</option>
+                    <option value="price-asc">السعر: من الأقل للأعلى</option>
+                    <option value="price-desc">السعر: من الأعلى للأقل</option>
+                    <option value="rating-desc">التقييم: من الأعلى للأقل</option>
+                    <option value="rating-asc">التقييم: من الأقل للأعلى</option>
+                </select>
+            </div>
+        </div>
+        <section class="product-grid" id="productGrid">
+        </section>
+
+        <div class="cart-drawer">
+            <h2>سلة التسوق <button class="remove-item-btn"><i class="fas fa-trash " id="allTrashItems"
+                        onclick="clearAllCart()"></i></button></h2>
+            <div class="cart-items">
+                <p>سلتك فارغة.</p>
+            </div>
+            <div class="total">الاجمالى : <span class="totalMoney">1000$</span></div>
+            <button class="btn btn-primary" onclick="openCheckoutModal()">إتمام الشراء</button>
+        </div>
+    </main>
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeDetails()">&times;</span>
+            <div id="modalDetailsContent">
+
+            </div>
+        </div>
+    </div>
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <span class="close-modal" onclick="closeWishlist()">&times;</span>
+            <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 20px;">
+                قائمة المفضلة ❤️
+            </h2>
+            <div id="wishlistGridItems" class="wishlist-grid"></div>
+        </div>
+    </div>
+    <div id="loginModal" class="modal">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+        <h2 style="margin-bottom: 20px;">تسجيل الدخول 👋</h2>
+        <form id="loginForm" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="text" id="usernameInput" placeholder="اسم المستخدم" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <input type="password" placeholder="كلمة المرور" required style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <button type="submit" class="btn btn-primary">دخول</button>
+        </form>
+    </div>
+</div>
+
+<div id="checkoutModal" class="modal">
+    <div class="modal-content" style="max-width: 500px;">
+        <span class="close-modal" onclick="closeCheckoutModal()">&times;</span>
+        <h2 style="color: var(--primary-color); margin-bottom: 20px; text-align: center;">بيانات الشحن 🚚</h2>
+        <form id="checkoutForm" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="text" placeholder="الاسم بالكامل" required class="form-input">
+            <input type="text" placeholder="العنوان بالتفصيل" required class="form-input">
+            <input type="tel" placeholder="رقم الهاتف" required class="form-input">
+            <div style="background: #f7fafc; padding: 10px; border-radius: 5px; text-align: center;">
+                <strong>الإجمالي للدفع: <span class="totalMoneyCheckout">0$</span></strong>
+            </div>
+            <button type="submit" class="btn btn-primary">تأكيد الطلب ✅</button>
+        </form>
+    </div>
+</div>
+
+    <script type="module" src="header.js"></script>
+    <script type="module" src="mainPage.js"></script>
+    <script type="module" src="filters.js"></script>
+    <script type="module" src="shopping.js"></script>
+</body>
+
+</html>
